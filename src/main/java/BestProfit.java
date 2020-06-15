@@ -11,18 +11,17 @@ public class BestProfit {
      * @param stockPrices array containing stock prices for the previous day,
      * should be a non null or non empty array
      *
-     * @return <code>maximum profit that can be made, 0 if length of stockPrices is 1</code>
-     * @throws IllegalArgumentException if stockPrices is null or empty
+     * @return <code>maximum profit that can be made</code>
+     * @throws IllegalArgumentException if stockPrices is null or empty or if it contains just 1 element
      */
     public int getMaxProfit(int [] stockPrices) throws IllegalArgumentException
     {
         if (stockPrices == null || stockPrices.length == 0)
             throw new IllegalArgumentException("Stock prices array cannot be null or empty");
 
-        // if there is only a single stock price, no profit can be made as buying and selling
-        // cannot occur at the same time
+        // if there is only a single stock price, we can't do any trading
         if (stockPrices.length == 1)
-            return 0;
+            throw new IllegalArgumentException("Stock prices array should have more than 1 element");
 
         int maxProfit = 0;
         int min = stockPrices[0];

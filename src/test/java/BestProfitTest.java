@@ -50,6 +50,18 @@ class BestProfitTest {
     }
 
     @Test
+    public void singleElementArrayShouldThrowException() {
+        final BestProfit bestProfit = new BestProfit();
+
+        final int[] stockPrices = {20};
+        assertThrows(IllegalArgumentException.class, new Executable() {
+            public void execute() {
+                bestProfit.getMaxProfit(stockPrices);
+            }
+        });
+    }
+
+    @Test
     void nullArrayShouldThrowException() {
         final BestProfit bestProfit = new BestProfit();
 
